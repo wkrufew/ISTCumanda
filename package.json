@@ -6,6 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^43.1.0",
         "@tailwindcss/forms": "^0.5.7",
         "@tailwindcss/typography": "^0.5.10",
         "autoprefixer": "^10.4.16",

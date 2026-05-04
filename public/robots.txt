@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /administrador/dashboard
+Disallow: /login
+
+Sitemap: https://istcumanda.edu.ec/sitemap.xml

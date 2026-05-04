@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $settings = Cache::remember('settings', 60*60*24, function () {
+            return Setting::first();
+        });
+
+        if ($settings) {
+            View::share('settings', $settings);
+        }
     }
 }

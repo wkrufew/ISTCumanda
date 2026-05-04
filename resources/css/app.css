@@ -5,3 +5,61 @@
 [x-cloak] {
     display: none;
 }
+
+body {
+    animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#map {
+    height: 144px;
+}
+
+.scrollTop {
+    bottom: 800px;
+    z-index: 9999;
+    visibility: hidden;
+    transition: 1s;
+}
+
+.scrollTop.active {
+    bottom: 40px;
+    visibility: visible;
+    opacity: 1;
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    border: 3px;
+    box-shadow: inset 0 0 15px #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000;
+    border: 3px solid #ffffff;
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbd12c;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+}
+
+.altura {
+    height: 360px;
+}

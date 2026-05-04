@@ -117,6 +117,9 @@ return [
     | Supported drivers: "file", "cache"
     |
     */
+    /* 'aliases' => [
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    ], */
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
