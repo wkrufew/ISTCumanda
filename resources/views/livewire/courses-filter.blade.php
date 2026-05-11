@@ -115,7 +115,7 @@
                                         </svg>
 
                                         <div class="mt-1.5 sm:mt-0">
-                                            <p class="text-gray-500">Duración</p>
+                                            <p class="text-gray-500">Duraci贸n</p>
 
                                             <p class="font-medium text-xs line-clamp-1">
                                                 {{ $course->duration }}

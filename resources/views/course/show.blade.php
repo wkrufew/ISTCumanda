@@ -9,7 +9,6 @@
         <meta property="og:url" content="{{ route('course.show', $course) }}">
         <meta property="og:type" content="article">
     @endsection
-
     @push('css')
     @endpush
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -58,7 +57,7 @@
                                             d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm64 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zM64 400l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0zm112 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z" />
                                     </svg>
                                 </span>
-                                <span class="font-semibold ml-1 mr-2">Fecha de aprobación: </span>
+                                <span class="font-semibold ml-1 mr-2">Aprobación: </span>
                                 <span>
                                     {{ $course->approval_date->isoFormat('D [de] MMMM [de] Y') }}
                                 </span>
@@ -102,17 +101,20 @@
                                 ${{ $course->total_investment }}
                             </span>
                         </p>
-                        <p class="flex items-center">
-                            <svg class="fill-gray-50 size-4" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 384 512">
-                                <path
-                                    d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM64 80c0-8.8 7.2-16 16-16l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L80 96c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16zm128 72c8.8 0 16 7.2 16 16l0 17.3c8.5 1.2 16.7 3.1 24.1 5.1c8.5 2.3 13.6 11 11.3 19.6s-11 13.6-19.6 11.3c-11.1-3-22-5.2-32.1-5.3c-8.4-.1-17.4 1.8-23.6 5.5c-5.7 3.4-8.1 7.3-8.1 12.8c0 3.7 1.3 6.5 7.3 10.1c6.9 4.1 16.6 7.1 29.2 10.9l.5 .1s0 0 0 0s0 0 0 0c11.3 3.4 25.3 7.6 36.3 14.6c12.1 7.6 22.4 19.7 22.7 38.2c.3 19.3-9.6 33.3-22.9 41.6c-7.7 4.8-16.4 7.6-25.1 9.1l0 17.1c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-17.8c-11.2-2.1-21.7-5.7-30.9-8.9c0 0 0 0 0 0c-2.1-.7-4.2-1.4-6.2-2.1c-8.4-2.8-12.9-11.9-10.1-20.2s11.9-12.9 20.2-10.1c2.5 .8 4.8 1.6 7.1 2.4c0 0 0 0 0 0s0 0 0 0s0 0 0 0c13.6 4.6 24.6 8.4 36.3 8.7c9.1 .3 17.9-1.7 23.7-5.3c5.1-3.2 7.9-7.3 7.8-14c-.1-4.6-1.8-7.8-7.7-11.6c-6.8-4.3-16.5-7.4-29-11.2l-1.6-.5s0 0 0 0c-11-3.3-24.3-7.3-34.8-13.7c-12-7.2-22.6-18.9-22.7-37.3c-.1-19.4 10.8-32.8 23.8-40.5c7.5-4.4 15.8-7.2 24.1-8.7l0-17.3c0-8.8 7.2-16 16-16z" />
-                            </svg>
-                            <span class="font-semibold ml-1 mr-2">Costo por ciclo: </span>
-                            <span>
-                                ${{ $course->investment_per_cycle }}
-                            </span>
-                        </p>
+                        @if($course->investment_per_cycle)
+                            <p class="flex items-center">
+                                <svg class="fill-gray-50 size-4" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 384 512">
+                                    <path
+                                        d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-288-128 0c-17.7 0-32-14.3-32-32L224 0 64 0zM256 0l0 128 128 0L256 0zM64 80c0-8.8 7.2-16 16-16l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L80 96c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16l64 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-64 0c-8.8 0-16-7.2-16-16zm128 72c8.8 0 16 7.2 16 16l0 17.3c8.5 1.2 16.7 3.1 24.1 5.1c8.5 2.3 13.6 11 11.3 19.6s-11 13.6-19.6 11.3c-11.1-3-22-5.2-32.1-5.3c-8.4-.1-17.4 1.8-23.6 5.5c-5.7 3.4-8.1 7.3-8.1 12.8c0 3.7 1.3 6.5 7.3 10.1c6.9 4.1 16.6 7.1 29.2 10.9l.5 .1s0 0 0 0s0 0 0 0c11.3 3.4 25.3 7.6 36.3 14.6c12.1 7.6 22.4 19.7 22.7 38.2c.3 19.3-9.6 33.3-22.9 41.6c-7.7 4.8-16.4 7.6-25.1 9.1l0 17.1c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-17.8c-11.2-2.1-21.7-5.7-30.9-8.9c0 0 0 0 0 0c-2.1-.7-4.2-1.4-6.2-2.1c-8.4-2.8-12.9-11.9-10.1-20.2s11.9-12.9 20.2-10.1c2.5 .8 4.8 1.6 7.1 2.4c0 0 0 0 0 0s0 0 0 0s0 0 0 0c13.6 4.6 24.6 8.4 36.3 8.7c9.1 .3 17.9-1.7 23.7-5.3c5.1-3.2 7.9-7.3 7.8-14c-.1-4.6-1.8-7.8-7.7-11.6c-6.8-4.3-16.5-7.4-29-11.2l-1.6-.5s0 0 0 0c-11-3.3-24.3-7.3-34.8-13.7c-12-7.2-22.6-18.9-22.7-37.3c-.1-19.4 10.8-32.8 23.8-40.5c7.5-4.4 15.8-7.2 24.1-8.7l0-17.3c0-8.8 7.2-16 16-16z" />
+                                </svg>
+                                <span class="font-semibold ml-1 mr-2">Matrícula: </span>
+                                <span>
+                                    ${{ $course->investment_per_cycle }}
+                                </span>
+                            </p>
+                        @endif
+
                         {{-- <p class="flex items-center">
                             <span>
                                 <svg class="fill-gray-50 size-4" xmlns="http://www.w3.org/2000/svg"
@@ -165,24 +167,32 @@
                                 {{ $course->category->name }}
                             </span>
                         </p>
-                        @isset($course->url)
-                            <div class="flex items-center">
-                                <span>
-                                    <svg class="size-4 fill-gray-50" xmlns="http://www.w3.org/2000/svg"
+                        @if($course->url || $course->url2)
+                            <div class="flex items-center space-x-5">
+                                @if ($course->url)
+                                    <a download href="{{ $course->url }}" target="_blank"
+                                        class="bg-naranja text-white rounded-full px-3 py-1 flex items-center space-x-2">
+                                        <svg class="size-4 fill-gray-50" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512">
                                         <path
                                             d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" />
                                     </svg>
-                                </span>
-                                <span class="font-semibold ml-1 mr-2">Ficha Tecnica: </span>
-                                @if ($course->url)
-                                    <a href="{{ $course->url }}" target="_blank"
-                                        class="bg-lime-600 text-white rounded-full px-3 py-1 flex items-center">
-                                        <span class="text-sm">Descargar</span>
+                                        <span class="text-sm">Malla Curricular</span>
+                                    </a>
+                                @endif
+                                @if  ($course->url2)
+                                <a download href="{{ $course->url2 }}" target="_blank"
+                                        class="bg-naranja text-white rounded-full px-3 py-1 flex items-center space-x-2">
+                                        <svg class="size-4 fill-gray-50" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512">
+                                        <path
+                                            d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z" />
+                                    </svg>
+                                        <span class="text-sm">Brochure</span>
                                     </a>
                                 @endif
                             </div>
-                        @endisset
+                        @endif
                         <p class="flex items-center font-medium text-gray-100 rounded-full">
                             <span class="bg-verde md:bg-verdeclaro px-3 py-2 rounded-full flex items-center space-x-2">
                                 <svg class="size-6 fill-gray-50" xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +200,13 @@
                                     <path
                                         d="M173.8 5.5c11-7.3 25.4-7.3 36.4 0L228 17.2c6 3.9 13 5.8 20.1 5.4l21.3-1.3c13.2-.8 25.6 6.4 31.5 18.2l9.6 19.1c3.2 6.4 8.4 11.5 14.7 14.7L344.5 83c11.8 5.9 19 18.3 18.2 31.5l-1.3 21.3c-.4 7.1 1.5 14.2 5.4 20.1l11.8 17.8c7.3 11 7.3 25.4 0 36.4L366.8 228c-3.9 6-5.8 13-5.4 20.1l1.3 21.3c.8 13.2-6.4 25.6-18.2 31.5l-19.1 9.6c-6.4 3.2-11.5 8.4-14.7 14.7L301 344.5c-5.9 11.8-18.3 19-31.5 18.2l-21.3-1.3c-7.1-.4-14.2 1.5-20.1 5.4l-17.8 11.8c-11 7.3-25.4 7.3-36.4 0L156 366.8c-6-3.9-13-5.8-20.1-5.4l-21.3 1.3c-13.2 .8-25.6-6.4-31.5-18.2l-9.6-19.1c-3.2-6.4-8.4-11.5-14.7-14.7L39.5 301c-11.8-5.9-19-18.3-18.2-31.5l1.3-21.3c.4-7.1-1.5-14.2-5.4-20.1L5.5 210.2c-7.3-11-7.3-25.4 0-36.4L17.2 156c3.9-6 5.8-13 5.4-20.1l-1.3-21.3c-.8-13.2 6.4-25.6 18.2-31.5l19.1-9.6C65 70.2 70.2 65 73.4 58.6L83 39.5c5.9-11.8 18.3-19 31.5-18.2l21.3 1.3c7.1 .4 14.2-1.5 20.1-5.4L173.8 5.5zM272 192a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM1.3 441.8L44.4 339.3c.2 .1 .3 .2 .4 .4l9.6 19.1c11.7 23.2 36 37.3 62 35.8l21.3-1.3c.2 0 .5 0 .7 .2l17.8 11.8c5.1 3.3 10.5 5.9 16.1 7.7l-37.6 89.3c-2.3 5.5-7.4 9.2-13.3 9.7s-11.6-2.2-14.8-7.2L74.4 455.5l-56.1 8.3c-5.7 .8-11.4-1.5-15-6s-4.3-10.7-2.1-16zm248 60.4L211.7 413c5.6-1.8 11-4.3 16.1-7.7l17.8-11.8c.2-.1 .4-.2 .7-.2l21.3 1.3c26 1.5 50.3-12.6 62-35.8l9.6-19.1c.1-.2 .2-.3 .4-.4l43.2 102.5c2.2 5.3 1.4 11.4-2.1 16s-9.3 6.9-15 6l-56.1-8.3-32.2 49.2c-3.2 5-8.9 7.7-14.8 7.2s-11-4.3-13.3-9.7z" />
                                 </svg>
-                                <span>Formación de tercer nivel</span>
+                                @if ($course->category->id == 1)
+                                    <span>Formación de tercer nivel</span>
+                                @elseif ($course->category->id == 4)
+                                    <span>Formación técnica</span>
+                                @elseif ($course->category->id == 5)
+                                    <span>Formación Contínua</span>
+                                @endif
                             </span>
                         </p>
                         {{-- <p class="flex items-center font-medium text-gray-100 rounded-full">
@@ -239,9 +255,9 @@
                 <div class="col-span-6 md:col-span-4">
                     <div class="col-span-6 md:col-span-4 bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md">
                         <h2 class="font-semibold">OBJETIVO</h2>
-                        <p class="mt-2">
+                        <h3 class="mt-2">
                             {!! $course->description !!}
-                        </p>
+                        </h3>
                     </div>
                     @if ($course->advantages->isNotEmpty())
                         <div
@@ -295,7 +311,7 @@
                         <div class="grid gap-6">
                             <div>
                                 <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md">
-                                    <h2 class="font-semibold">PARA QUIEN ES ESTE CURSO</h2>
+                                    <h2 class="font-semibold">PARA QUIEN ES ESTA CARRERA</h2>
                                     <ul class="mt-3">
                                         @forelse ($course->audiences as $audience)
                                             <li class="space-x-2 flex">
@@ -315,25 +331,27 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md">
-                                    <h2 class="font-semibold">REQUISITOS</h2>
-                                    <ul class="mt-3">
-                                        @forelse ($course->requirements as $requirement)
-                                            <li class="space-x-2 flex">
-                                                <span>
-                                                    <svg class="fill-verde size-4 mt-1.5"
-                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                        <path
-                                                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
-                                                    </svg>
-                                                </span>
-                                                <span>{{ $requirement->name }}</span>
-                                            </li>
-                                        @empty
-                                            <li>Sin metas</li>
-                                        @endforelse
-                                    </ul>
-                                </div>
+                                @if($course->requirements->isNotEmpty())
+                                    <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md">
+                                        <h2 class="font-semibold">REQUISITOS</h2>
+                                        <ul class="mt-3">
+                                            @forelse ($course->requirements as $requirement)
+                                                <li class="space-x-2 flex">
+                                                    <span>
+                                                        <svg class="fill-verde size-4 mt-1.5"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                            <path
+                                                                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+                                                        </svg>
+                                                    </span>
+                                                    <span>{{ $requirement->name }}</span>
+                                                </li>
+                                            @empty
+                                                <li>Sin metas</li>
+                                            @endforelse
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                             <div class="block md:hidden">
                                 @if ($course->teachers->isNotEmpty())
@@ -461,7 +479,7 @@
                                 </ul>
                             </div>
                             <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 shadow-md">
-                                <h2 class="font-semibold">PARA QUIEN ES ESTE CURSO</h2>
+                                <h2 class="font-semibold">PARA QUIEN ES ESTA CARRERA</h2>
                                 <ul class="mt-3">
                                     @forelse ($course->audiences as $audience)
                                         <li class="space-x-2 flex items-center">
@@ -504,6 +522,16 @@
                     </div> --}}
                 </div>
                 {{-- BOTON FLOTANTE --}}
+                @php
+                    $fecha = now()->format('Y-m-d H:i:s'); // con hora
+
+                    $mensaje = "Hola IST Cumandá,\n\n"
+                        . "Estoy interesado/a en conocer más sobre la tecnología: *{$course->title}*.\n\n"
+                        . "Agradezco su atención y espero recibir más información sobre el proceso de admisión y matrícula. \n\n"
+                        . "Fecha de contacto: {$fecha}.";
+
+                    $mensajeCodificado = urlencode($mensaje);
+                @endphp
                 <div
                     class="tarjeta-carrito md:hidden p-4 fixed z-40 right-0 w-full shadow-xl bg-neutral-900 border-t-2 border-verde rounded-t-3xl">
                     <h2 class="font-semibold text-gray-50">SE PARTE DE LA CARRERA {{ $course->title }}</h2>
@@ -511,23 +539,10 @@
                         formar
                         parte de
                         nuestra institución</p>
-                    <div>
+                    <div>{{-- {{ route('course.enrolled', $course) }} --}}
                         @if ($course->period && $course->period->isRegistrationOpen())
                             {{-- <a class="block text-center w-full bg-morado hover:bg-morado/80 text-white font-semibold rounded-full px-4 py-2 mt-4"
                                 href="{{ route('course.inscripcion', $course) }}">MATRICULATE AHORA</a> --}}
-                            @php
-                                //use Carbon\Carbon;
-
-                                $fecha = now();
-
-                                $mensaje =
-                                    'Hola IST Cumandá,%0A' .
-                                    "Estoy interesado/a en conocer más sobre la tecnología: *{$course->title}*.%0A" .
-                                    "Fecha de contacto: {$fecha}.%0A" .
-                                    'Agradezco su atención y espero recibir más información sobre el proceso de admisión y matrícula.';
-
-                                $mensajeCodificado = urlencode($mensaje);
-                            @endphp
 
                             <a class="block text-center w-full bg-morado hover:bg-morado/80 text-white font-semibold rounded-full px-4 py-2 mt-4"
                                 href="https://api.whatsapp.com/send?phone={{ $settings->site_phone_1 }}&text={{ $mensajeCodificado }}"
@@ -574,8 +589,11 @@
                         </p>
                         <div>{{-- {{ route('course.enrolled', $course) }} --}}
                             @if ($course->period && $course->period->isRegistrationOpen())
-                                <a class="block text-center w-full bg-morado hover:bg-morado/80 text-white font-semibold rounded-full px-4 py-2 mt-2 relative overflow-hidden radar-effect botonpro"
-                                    href="{{ route('course.inscripcion', $course) }}">MATRICULATE AHORA</a>
+                                {{-- <a class="block text-center w-full bg-morado hover:bg-morado/80 text-white font-semibold rounded-full px-4 py-2 mt-2 relative overflow-hidden radar-effect botonpro"
+                                    href="{{ route('course.inscripcion', $course) }}">MATRICULATE AHORA</a> --}}
+
+                                    <a class="block text-center w-full bg-morado hover:bg-morado/80 text-white font-semibold rounded-full px-4 py-2 mt-2 relative overflow-hidden radar-effect botonpro"
+                                    href="https://api.whatsapp.com/send?phone={{ $settings->site_phone_1 }}&text={{ $mensajeCodificado }}" target="_blank">MATRICULATE AHORA</a>
                             @else
                                 <p class="text-gray-100 text-sm text-center mt-4 px-2 py-2 rounded-full bg-red-700">
                                     Terminó el periodo de inscripción para este curso
