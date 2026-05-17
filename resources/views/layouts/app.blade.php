@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="theme-color" content="#BBD12C" />
+    <meta name="theme-color" content="#32620e" />
 
     <!-- SEO Dinámico -->
     <title>{{ $settings->site_name }} @yield('title')</title>
@@ -20,7 +20,7 @@
     <meta property="og:title" content="{{ $settings->site_name }} @yield('title', 'Inicio')">
     <meta property="og:description" content="@yield('description', 'Obtén una educación de calidad en ISTCumandá para un futuro lleno de oportunidades.')">
     <meta property="og:url" content="@yield('url', config('app.url'))">
-    <meta property="og:image" content="@yield('img', asset('imagenes/IST_LOGO.webp'))">
+    <meta property="og:image" content="@yield('img', asset('imagenes/logo_pro.webp'))">
     <meta property="og:image:width" content="450">
     <meta property="og:image:height" content="450">
     <meta property="og:site_name" content="{{ $settings->site_name }}">
@@ -29,14 +29,15 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $settings->site_name }} @yield('title', 'Inicio')">
     <meta name="twitter:description" content="@yield('description', 'Obtén una educación de calidad en ISTCumandá para un futuro lleno de oportunidades.')">
-    <meta name="twitter:image" content="@yield('img', asset('imagenes/IST_LOGO.webp'))">
+    <meta name="twitter:image" content="@yield('img', asset('imagenes/logo_pro.webp'))">
     <meta name="twitter:site" content="@ISTCumanda">
     <meta name="twitter:creator" content="@ISTCumanda">
 
     @yield('og-tags') <!-- Etiquetas Open Graph adicionales si es necesario -->
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('imagenes/icono.webp') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('imagenes/icono.webp') }}" type="image/webp">
+    <link rel="apple-touch-icon" href="{{ asset('imagenes/icono.webp') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -48,10 +49,10 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://kit.fontawesome.com/a501d340ea.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal" defer></script>
+    <script src="https://kit.fontawesome.com/a501d340ea.js" crossorigin="anonymous" defer></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
     <!-- Styles -->
     @livewireStyles
@@ -122,7 +123,7 @@
         });
     </script>
 </body>
-{{-- 
+{{--
  document.addEventListener('livewire:init', function() {
             @if (session('alert'))
                 let alertData = @json(session('alert'));

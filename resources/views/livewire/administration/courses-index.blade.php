@@ -5,7 +5,7 @@
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <div class="py-4 px-6 flex">
-                            <input wire:model="search" type="search" class="form-input flex-1 shadow-lg  rounded-full"
+                            <input wire:model.live="search" type="search" class="form-input flex-1 shadow-lg  rounded-full"
                                 placeholder="Escriba el nombre de un curso...">
                             <a class="px-3 py-2 rounded-full bg-blue-600 text-white font-medium ml-2"
                                 href="{{ route('administrador.courses.create') }}">Nuevo

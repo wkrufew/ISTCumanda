@@ -27,5 +27,12 @@ export default {
         },
     },
 
+    safelist: [
+        'bg-verde', 'bg-verdeclaro', 'bg-morado', 'bg-naranja', 'bg-azul',
+        'text-verde', 'text-verdeclaro', 'text-morado', 'text-naranja', 'text-azul',
+        'text-white', 'text-gray-900',
+        'hover:bg-verde', 'hover:bg-verdeclaro', 'hover:bg-morado', 'hover:bg-naranja', 'hover:bg-azul',
+    ],
+
     plugins: [forms, typography],
 };

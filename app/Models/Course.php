@@ -16,6 +16,7 @@ class Course extends Model
 
     protected $casts = [
         'approval_date' => 'datetime:Y-m-d',
+        'links' => 'array',
     ];
 
     public function getRouteKeyName()

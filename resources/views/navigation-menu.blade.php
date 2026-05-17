@@ -61,14 +61,10 @@
             <div class="text-white text-sm px-6 my-2 flex items-center">
                 {{-- ESCRITORIO --}}
                 <a href="{{ route('contact') }}"
-                    class="hover:text-white hover:bg-verde rounded-full px-2 py-1 font-medium text-sm bg-verdeclaro {{ request()->routeIs('contact') ? 'bg-verdeclaro text-white' : '' }} ">
+                    class="hidden md:block hover:text-white hover:bg-verde rounded-full px-2 py-1 font-medium text-sm bg-verdeclaro {{ request()->routeIs('contact') ? 'bg-verdeclaro text-white' : '' }} ">
                     CONTACTANOS</a>
-                {{-- <a id="iconos-menu" href="tel:+593984407637"
-                    class="hidden md:block tracking-wide px-3 py-1 hover:text-verde text-sm font-medium rounded-full transition duration-300 ease-in-out transform hover:-translate-y-0.5 hover:scale-105">
-                    <i class="fas fa-headset text-lg"></i>ss
-                </a> --}}
                 {{-- MOVIL --}}
-                <a href="tel:+593984407637" class="block md:hidden">
+                <a href="tel:{{ $settings->site_phone_1 }}" class="block md:hidden">
                     <i class="fas fa-headset text-lg text-zinc-400"></i>
                 </a>
                 <div>

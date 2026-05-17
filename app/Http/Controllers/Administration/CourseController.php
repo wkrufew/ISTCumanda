@@ -37,13 +37,16 @@ class CourseController extends Controller
             'period_id' => 'required',
             'modality' => 'required',
             'duration' => 'required',
-            'url' => 'nullable|url',
-            'url2' => 'nullable|url',
             'approval_date' => 'nullable|date',
             'comunicado' => 'nullable|string',
             'total_investment' => 'nullable|numeric',
             'investment_per_cycle' => 'nullable|numeric',
             'file' => 'nullable|image|mimes:jpeg,png,webp|max:2048',
+            'links' => 'nullable|array|max:3',
+            'links.*.url' => 'nullable|url',
+            'links.*.label' => 'nullable|string|max:100',
+            'links.*.bg' => 'nullable|in:verde,verdeclaro,morado,naranja,azul',
+            'links.*.text' => 'nullable|in:white,gray-900',
         ], [
             'title.required' => 'El campo Título es requerido',
             'slug.required' => 'El campo nombre es requerido',
@@ -53,8 +56,7 @@ class CourseController extends Controller
             'period_id.required' => 'Debe seleccionar un periodo',
             'modality.required' => 'Debe seleccionar una modalidad',
             'duration.required' => 'Debe seleccionar una duración',
-            'url.url' => 'Debe ingresar una URL válida',
-            'url2.url' => 'Debe ingresar una URL válida',
+            'links.*.url.url' => 'Uno de los enlaces no tiene una URL válida',
             'approval_date.date' => 'La fecha de aprobación debe ser una fecha válida',
             'comunicado.string' => 'El comunicado debe ser un texto',
             'total_investment.numeric' => 'La inversión total debe ser un número',
@@ -63,7 +65,15 @@ class CourseController extends Controller
             'file.mimes' => 'La imagen debe ser de tipo JPEG o PNG',
         ]);
 
-        $course = new Course($request->all());
+        $filteredLinks = collect($request->links ?? [])
+            ->filter(fn($link) => !empty($link['url']))
+            ->values()
+            ->toArray();
+
+        $data = $request->except('links');
+        $data['links'] = !empty($filteredLinks) ? $filteredLinks : null;
+
+        $course = new Course($data);
         $course->user_id = Auth::id();
         $course->status = Course::BORRADOR;
         $course->save();
@@ -93,13 +103,16 @@ class CourseController extends Controller
             'period_id' => 'required',
             'modality' => 'required',
             'duration' => 'nullable',
-            'url' => 'nullable|url',
-            'url2' => 'nullable|url',
             'approval_date' => 'nullable|date',
             'comunicado' => 'nullable|string',
             'total_investment' => 'nullable|numeric',
             'investment_per_cycle' => 'nullable|numeric',
             'file' => 'nullable|image|mimes:jpeg,png,webp|max:2048',
+            'links' => 'nullable|array|max:3',
+            'links.*.url' => 'nullable|url',
+            'links.*.label' => 'nullable|string|max:100',
+            'links.*.bg' => 'nullable|in:verde,verdeclaro,morado,naranja,azul',
+            'links.*.text' => 'nullable|in:white,gray-900',
         ], [
             'title.required' => 'El campo Título es requerido',
             'slug.required' => 'El campo slug es requerido',
@@ -108,9 +121,7 @@ class CourseController extends Controller
             'category_id.required' => 'Debe seleccionar una categoría',
             'period_id.required' => 'Debe seleccionar un periodo',
             'modality.required' => 'Debe seleccionar una modalidad',
-            'duration.nullable' => 'Debe seleccionar una duración',
-            'url.url' => 'Debe ingresar una URL válida',
-            'url2.url' => 'Debe ingresar una URL válida',
+            'links.*.url.url' => 'Uno de los enlaces no tiene una URL válida',
             'approval_date.date' => 'La fecha de aprobación debe ser una fecha válida',
             'comunicado.string' => 'El comunicado debe ser un texto',
             'total_investment.numeric' => 'La inversión total debe ser un número',
@@ -119,7 +130,15 @@ class CourseController extends Controller
             'file.mimes' => 'La imagen debe ser de tipo JPEG o PNG',
         ]);
 
-        $course->update($request->all());
+        $filteredLinks = collect($request->links ?? [])
+            ->filter(fn($link) => !empty($link['url']))
+            ->values()
+            ->toArray();
+
+        $data = $request->except('links');
+        $data['links'] = !empty($filteredLinks) ? $filteredLinks : null;
+
+        $course->update($data);
 
         if ($request->file('file')) {
             $url = Storage::put('courses', $request->file('file'));

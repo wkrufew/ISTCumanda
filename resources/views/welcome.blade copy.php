@@ -1,6 +1,6 @@
 <x-app-layout>
     @push('css')
-        <link rel="preload" as="image" href="{{ asset('imagenes/portada_pro.webp') }}" fetchpriority="high">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @endpush
 
     @section('title', '| BIENVENIDO')
@@ -15,7 +15,7 @@
         ', futuro, oportunidades, calidad
         educativa')
     @section('url', config('app.url'))
-    @section('img', asset('imagenes/portada_pro.webp'))
+    @section('img', asset('imagenes/logo_pro.webp'))
 
     @section('og-tags')
         <meta property="og:url" content="{{ config('app.url') }}">
@@ -23,7 +23,7 @@
     @endsection
 
     <section id="inicio" class="h-screen relative overflow-hidden -mt-16 md:-mt-20"
-        style="background: url('{{ asset('imagenes/portada_pro.webp') }}') center center / cover no-repeat;">
+        style="background: url('{{ asset('imagenes/portada_pro.jpeg') }}') center center / cover no-repeat fixed;">
         <div class="absolute top-0 right-0 w-full h-screen bg-black/60"></div>
         <div class="bg-cover max-w-full mx-2 md:mx-6 px-2 sm:px-2 lg:px-4 pt-6 md:pt-10 py-3">
             <div class="flex flex-col w-full md:w-full justify-center text-center md:text-left">
@@ -94,8 +94,8 @@
             <div class="flex flex-col items-center">
                 <!-- Título y icono -->
                 <div class="mb-6 flex flex-col items-center">
-                    <img src="https://images.pexels.com/photos/3651820/pexels-photo-3651820.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&fit=crop"
-                        alt="Innovación y tecnología" class="w-24 h-24 rounded-full shadow-sm" loading="lazy" width="96" height="96">
+                    <img src="https://images.pexels.com/photos/3651820/pexels-photo-3651820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Innovación y tecnología" class="w-24 h-24 rounded-full shadow-sm ">
                     <h2 class="text-3xl font-bold text-naranja mt-4 uppercase">Nuestro Compromiso</h2>
                 </div>
 
@@ -148,13 +148,13 @@
                     <style>
                         .foton {
                             width: 480px;
-                            height: 320px;
+                            height: 320;
                         }
                     </style>
                     <img loading="lazy"
                         class="relative foton object-cover bg-cover object-center rounded-2xl shadow-none md:shadow-md md:shadow-verde/50"
-                        src="https://images.pexels.com/photos/9572347/pexels-photo-9572347.jpeg?auto=compress&cs=tinysrgb&h=320&w=480"
-                        alt="portada" width="480" height="320">
+                        src="{{ asset('https://images.pexels.com/photos/9572347/pexels-photo-9572347.jpeg?auto=compress&cs=tinysrgb&h=320&w=480') }}"
+                        alt="portada">
                 </div>
             </div>
             <div class="seccion-institucion-2 flex flex-col justify-center items-left px-6 ">
@@ -237,7 +237,7 @@
                 <div class="hidden lg:block">
                     <div class="m-1 flex justify-center items-center">
                         <img loading="lazy" class="rounded-full w-32 h-32 object-center object-cover"
-                            src="{{ asset('imagenes/icono.webp') }}" alt="centro" width="128" height="128">
+                            src="{{ asset('imagenes/icono.webp') }}" alt="centro">
                     </div>
                 </div>
                 <div class="m-1 mt-16 lg:mt-0">
@@ -309,7 +309,7 @@
                             <a href="{{ route('course.show', $item) }}"
                                 class="curso-{{ $key + 1 }} group block rounded-lg p-4 shadow-sm hover:shadow-md shadow-verdeclaro  hover:shadow-verdeclaro bg-gray-50">
                                 <img alt="{{ $item->title }}" src="{{ Storage::url($item->image->url) }}"
-                                    class="h-56 w-full rounded-md object-cover" loading="lazy" width="400" height="224" />
+                                    class="h-56 w-full rounded-md object-cover" />
                                 <div class="mt-1">
                                     <dl>
                                         <div>
@@ -407,7 +407,7 @@
                 <div class="w-full lg:w-3/4">
                     <div class="flex-shrink-0 flex justify-center mb-2">
                         <img loading="lazy" class="block w-36 h-36 object-center rounded-full"
-                            src="{{ asset('imagenes/icono.webp') }}" alt="logo" width="144" height="144">
+                            src="{{ asset('imagenes/icono.webp') }}" alt="logo">
                     </div>
                     <h2 class="text-3xl font-bold py-10 text-naranja uppercase">
                         ¿POR QUÉ ELEGIR al INSTITUTO SUPERIOR TECNOLÓGICO CUMANDÁ?
@@ -553,7 +553,7 @@
                         <div class="px-4 font-bold uppercase text-base">CACES</div>
                         <div class="absolute top-0 -left-10 w-20 h-20 rounded-full block bg-verde p-1">
                             <img loading="lazy" class="w-full h-full rounded-full object-cover object-center"
-                                src="{{ asset('imagenes/caces.jpg') }}" alt="caces" width="80" height="80">
+                                src="{{ asset('imagenes/caces.jpg') }}" alt="caces">
                         </div>
                     </a>
                 </div>
@@ -563,7 +563,7 @@
                         <div class="px-4 font-bold uppercase text-base"> SENESCYT</div>
                         <div class="absolute top-0 -left-10 w-20 h-20 rounded-full block bg-verde p-1">
                             <img loading="lazy" class="w-full h-full rounded-full object-cover object-center"
-                                src="{{ asset('imagenes/senescyt.jpg') }}" alt="senescyt" width="80" height="80">
+                                src="{{ asset('imagenes/senescyt.jpg') }}" alt="senescyt">
                         </div>
                     </a>
                 </div>
