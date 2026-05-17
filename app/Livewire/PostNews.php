@@ -10,63 +10,56 @@ use Livewire\Component;
 
 class PostNews extends Component
 {
-    public $perPage = 5; // Número inicial de publicaciones
-    public $increment = 5; // Incremento al cargar más publicaciones
-    public $selectedTipo = null; // Tipo seleccionado para el filtro
-    public $isMobile = false; // Detecta si la vista es móvil
+    public int $perPage = 6;
+    public $selectedTipo = null;
 
-    public function mount()
+    public function updatedSelectedTipo(): void
     {
-        // Detectar si es móvil basándose en el User-Agent
-        $this->isMobile = request()->header('User-Agent') && preg_match('/Mobile|Android|iPhone/', request()->header('User-Agent'));
-        //dd($this->isMobile);
+        $this->perPage = 6;
     }
 
-    public function loadMore()
+    public function loadMore(): void
     {
-        $this->perPage += $this->increment; // Incrementar las publicaciones mostradas
+        $this->perPage += 6;
     }
 
-    public function limpiarFiltro()
+    public function limpiarFiltro(): void
     {
-        $this->selectedTipo = null; // Limpiar el filtro
+        $this->selectedTipo = null;
+        $this->perPage = 6;
     }
 
     #[Layout('layouts.app')]
     public function render()
     {
-        // Publicaciones destacadas
-        $relevantPosts = /* Cache::remember('relevant_posts', 60, function () {
-            return */ Post::where('is_active', true)
-                ->where('is_relevant', true)
-                ->when($this->selectedTipo, function ($query) {
-                    return $query->where('tipo_id', $this->selectedTipo);
-                })
-                ->orderBy('created_at', 'desc')
-                ->take(5) // Siempre los 5 más recientes
-                ->get();
-        /* }); */
+        $tipos = Cache::remember('posts_tipos', 3600, fn() =>
+            Tipo::select('id', 'name')->get()
+        );
 
-        // Publicaciones normales con paginación progresiva
-        $posts = Post::where('is_active', true)
+        $version = Cache::get('posts_version', 0);
+        $cacheKey = "posts_relevant_{$this->selectedTipo}_{$version}";
+
+        $relevantPosts = Cache::remember($cacheKey, 300, function () {
+            return Post::with(['image', 'tipo', 'user'])
+                ->where('is_active', true)
+                ->where('is_relevant', true)
+                ->when($this->selectedTipo, fn($q) => $q->where('tipo_id', $this->selectedTipo))
+                ->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get();
+        });
+
+        $feed = Post::with(['image', 'tipo', 'user'])
+            ->where('is_active', true)
             ->where('is_relevant', false)
-            ->when($this->selectedTipo, function ($query) {
-                return $query->where('tipo_id', $this->selectedTipo);
-            })
+            ->when($this->selectedTipo, fn($q) => $q->where('tipo_id', $this->selectedTipo))
             ->orderBy('created_at', 'desc')
-            ->take($this->perPage)
+            ->take($this->perPage + 1)
             ->get();
 
-        // Todos los tipos para los filtros
-        $tipos = Tipo::select('id', 'name')->get();
+        $hasMore = $feed->count() > $this->perPage;
+        $posts   = $feed->take($this->perPage);
 
-        return view('livewire.post-news', [
-            'relevantPosts' => $relevantPosts,
-            'posts' => $posts,
-            'tipos' => $tipos,
-            'isMobile' => $this->isMobile,
-        ]);
-
-        //return view('livewire.post-news');
+        return view('livewire.post-news', compact('relevantPosts', 'posts', 'tipos', 'hasMore'));
     }
 }

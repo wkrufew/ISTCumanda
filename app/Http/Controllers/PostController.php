@@ -10,6 +10,16 @@ class PostController extends Controller
 {
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
-    }   
+        $post->load(['image', 'tipo', 'user']);
+
+        $related = Post::with(['image', 'tipo'])
+            ->where('is_active', true)
+            ->where('tipo_id', $post->tipo_id)
+            ->where('id', '!=', $post->id)
+            ->orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('post.show', compact('post', 'related'));
+    }
 }

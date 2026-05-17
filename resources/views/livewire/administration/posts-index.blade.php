@@ -47,7 +47,7 @@
                                         </th>
                                         <th scope="col"
                                             class="px-3 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            CREACION
+                                            Creación
                                         </th>
                                         <th scope="col" class="relative px-6 py-3">
                                             <span class="sr-only">Opciones</span>

@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tipo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -58,6 +59,8 @@ class PostController extends Controller
             $url = Storage::put('posts', $request->file('file'));
             $post->image()->create(['url' => $url]);
         }
+        Cache::put('posts_version', time(), 86400);
+
         $notificacion = "El post {$request->title} se ha creado correctamente";
         return redirect()->route('administrador.posts.index')->with('notificacion', $notificacion);
     }
@@ -104,6 +107,8 @@ class PostController extends Controller
                 $post->image()->create(['url' => $url]);
             }
         }
+
+        Cache::put('posts_version', time(), 86400);
 
         $notificacion = "El post {$request->title} se ha actualizado correctamente";
         return redirect()->route('administrador.posts.edit', $post)->with('notificacion', $notificacion);

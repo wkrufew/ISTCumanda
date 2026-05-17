@@ -19,13 +19,14 @@ class DocumentViewer extends Component
         /* $documents = Document::where('title', 'LIKE', '%' . $this->search . '%')
             ->latest('id')
             ->paginate(10); */
-        $documents = Document::where('is_active', true)
+        $documents = Document::select(['id', 'title', 'description', 'file'])
+            ->where('is_active', true)
             ->where(function ($query) {
                 $query->where('title', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('description', 'LIKE', '%' . $this->search . '%');
             })
             ->latest('id')
-            ->paginate(10);
+            ->paginate(9);
 
         return view('livewire.document-viewer', compact('documents'));
     }

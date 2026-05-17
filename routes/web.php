@@ -28,25 +28,25 @@ Route::get('certificaciones', function () {
     return view('certificados');
 })->name('certificados');
 
-Route::get('convenios', function () {
+Route::get('convenios-interinstitucionales', function () {
     return view('convenio');
 })->name('convenios');
 
-Route::get('nosotros', function () {
+Route::get('quienes-somos', function () {
     return view('nosotros');
 })->name('about');
 
-Route::get('documents', function () {
+Route::get('documentos-institucionales', function () {
     return view('documents');
 })->name('documents');
 
-Route::get('contacto', FormularioContacto::class)->name('contact');
+Route::get('contactanos', FormularioContacto::class)->name('contact');
 
 //NEWS
-Route::get('news', PostNews::class)->name('news.index');
-Route::get('news/{post}', [PostController::class, 'show'])->name('news.show');
+Route::get('noticias', PostNews::class)->name('news.index');
+Route::get('noticias/{post}', [PostController::class, 'show'])->name('news.show');
 
-Route::get('virtual', function () {
+Route::get('bibliotecas', function () {
     return view('virtual');
 })->name('virtual');
 
